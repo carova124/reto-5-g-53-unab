@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <style type="text/css">
+            body{
+                background-image: url("http://localhost:8080/Proyecto_Watchsoccer/faces/resources/imagenes/estadio.jpg");
+            }
+            
+        </style>
+    </h:head>
+
+    <h:body>
+       
+        <div id="encabezado">
+           
+            <h1><ui:insert name="header">PROYECTO WATCH SOCCER</ui:insert></h1>
+            <h3><ui:insert name="header">Para los amantes del mejor espectáculo del mundo</ui:insert></h3>
+        </div>
+        <nav id="Menu">
+            <h:form>
+                <ul>
+                    <li><h:commandLink action="INICIO">INICIO</h:commandLink></li>
+                    <li><h:commandLink action="REGISTRO">REGISTRO USUARIO</h:commandLink></li>
+                    <li><h:commandLink action="INICIAR SESION">EDITAR USUARIO</h:commandLink></li>
+                    <li><h:commandLink action="REGISTRAR PARTIDO">REGISTRAR PARTIDO</h:commandLink></li>
+                    <li><h:commandLink action="MODIFICAR PARTIDO">INCLUIR EQUIPO</h:commandLink></li>
+                    <li><h:commandLink action="VER PARTIDO">VER PARTIDO</h:commandLink></li>
+
+                </ul>
+            </h:form>
+        </nav>
+        <div id="contenido">
+            <ui:insert name="body">Default Body</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

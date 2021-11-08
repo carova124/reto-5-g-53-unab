@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPartidosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPartidosLabel_idPartidos}"/>
+                    <h:outputText value="#{partidosController.selected.idPartidos}" title="#{bundle.ViewPartidosTitle_idPartidos}"/>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_fecha}"/>
+                    <h:outputText value="#{partidosController.selected.fecha}" title="#{bundle.ViewPartidosTitle_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_golesLocal}"/>
+                    <h:outputText value="#{partidosController.selected.golesLocal}" title="#{bundle.ViewPartidosTitle_golesLocal}"/>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_golesVisitante}"/>
+                    <h:outputText value="#{partidosController.selected.golesVisitante}" title="#{bundle.ViewPartidosTitle_golesVisitante}"/>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_usuario}"/>
+                    <h:outputText value="#{partidosController.selected.usuario}" title="#{bundle.ViewPartidosTitle_usuario}"/>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_local}"/>
+                    <h:outputText value="#{partidosController.selected.local}" title="#{bundle.ViewPartidosTitle_local}"/>
+                    <h:outputText value="#{bundle.ViewPartidosLabel_visitante}"/>
+                    <h:outputText value="#{partidosController.selected.visitante}" title="#{bundle.ViewPartidosTitle_visitante}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partidosController.destroyAndView}" value="#{bundle.ViewPartidosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPartidosEditLink}"/>
+                <br />
+                <h:commandLink action="#{partidosController.prepareCreate}" value="#{bundle.ViewPartidosCreateLink}" />
+                <br />
+                <h:commandLink action="#{partidosController.prepareList}" value="#{bundle.ViewPartidosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPartidosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

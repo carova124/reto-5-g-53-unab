@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquiposTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquiposLabel_idEquipos}"/>
+                    <h:outputText value="#{equiposController.selected.idEquipos}" title="#{bundle.ViewEquiposTitle_idEquipos}"/>
+                    <h:outputText value="#{bundle.ViewEquiposLabel_nombre}"/>
+                    <h:outputText value="#{equiposController.selected.nombre}" title="#{bundle.ViewEquiposTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEquiposLabel_partidos}"/>
+                    <h:outputText value="#{equiposController.selected.partidos}" title="#{bundle.ViewEquiposTitle_partidos}"/>
+                    <h:outputText value="#{bundle.ViewEquiposLabel_partidos1}"/>
+                    <h:outputText value="#{equiposController.selected.partidos1}" title="#{bundle.ViewEquiposTitle_partidos1}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equiposController.destroyAndView}" value="#{bundle.ViewEquiposDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEquiposEditLink}"/>
+                <br />
+                <h:commandLink action="#{equiposController.prepareCreate}" value="#{bundle.ViewEquiposCreateLink}" />
+                <br />
+                <h:commandLink action="#{equiposController.prepareList}" value="#{bundle.ViewEquiposShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEquiposIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

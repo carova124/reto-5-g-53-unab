@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPartidosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPartidosEmpty}" rendered="#{partidosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{partidosController.items.rowCount > 0}">
+                    <h:outputText value="#{partidosController.pagination.pageFirstItem + 1}..#{partidosController.pagination.pageLastItem + 1}/#{partidosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{partidosController.previous}" value="#{bundle.Previous} #{partidosController.pagination.pageSize}" rendered="#{partidosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{partidosController.next}" value="#{bundle.Next} #{partidosController.pagination.pageSize}" rendered="#{partidosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{partidosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_idPartidos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPartidos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_golesLocal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.golesLocal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_golesVisitante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.golesVisitante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_local}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.local}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartidosTitle_visitante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.visitante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{partidosController.prepareView}" value="#{bundle.ListPartidosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{partidosController.prepareEdit}" value="#{bundle.ListPartidosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{partidosController.destroy}" value="#{bundle.ListPartidosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{partidosController.prepareCreate}" value="#{bundle.ListPartidosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPartidosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

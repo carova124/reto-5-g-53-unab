@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePartidosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_idPartidos}" for="idPartidos" />
+                    <h:inputText id="idPartidos" value="#{partidosController.selected.idPartidos}" title="#{bundle.CreatePartidosTitle_idPartidos}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_idPartidos}"/>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{partidosController.selected.fecha}" title="#{bundle.CreatePartidosTitle_fecha}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_golesLocal}" for="golesLocal" />
+                    <h:inputText id="golesLocal" value="#{partidosController.selected.golesLocal}" title="#{bundle.CreatePartidosTitle_golesLocal}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_golesLocal}"/>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_golesVisitante}" for="golesVisitante" />
+                    <h:inputText id="golesVisitante" value="#{partidosController.selected.golesVisitante}" title="#{bundle.CreatePartidosTitle_golesVisitante}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_golesVisitante}"/>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{partidosController.selected.usuario}" title="#{bundle.CreatePartidosTitle_usuario}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_local}" for="local" />
+                    <h:selectOneMenu id="local" value="#{partidosController.selected.local}" title="#{bundle.CreatePartidosTitle_local}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_local}">
+                        <f:selectItems value="#{equiposController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePartidosLabel_visitante}" for="visitante" />
+                    <h:selectOneMenu id="visitante" value="#{partidosController.selected.visitante}" title="#{bundle.CreatePartidosTitle_visitante}" required="true" requiredMessage="#{bundle.CreatePartidosRequiredMessage_visitante}">
+                        <f:selectItems value="#{equiposController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partidosController.create}" value="#{bundle.CreatePartidosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{partidosController.prepareList}" value="#{bundle.CreatePartidosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePartidosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

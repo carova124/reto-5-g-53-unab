@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquiposTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquiposLabel_idEquipos}" for="idEquipos" />
+                    <h:inputText id="idEquipos" value="#{equiposController.selected.idEquipos}" title="#{bundle.EditEquiposTitle_idEquipos}" required="true" requiredMessage="#{bundle.EditEquiposRequiredMessage_idEquipos}"/>
+                    <h:outputLabel value="#{bundle.EditEquiposLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{equiposController.selected.nombre}" title="#{bundle.EditEquiposTitle_nombre}" required="true" requiredMessage="#{bundle.EditEquiposRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEquiposLabel_partidos}" for="partidos" />
+                    <h:selectOneMenu id="partidos" value="#{equiposController.selected.partidos}" title="#{bundle.EditEquiposTitle_partidos}" >
+                        <f:selectItems value="#{partidosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquiposLabel_partidos1}" for="partidos1" />
+                    <h:selectOneMenu id="partidos1" value="#{equiposController.selected.partidos1}" title="#{bundle.EditEquiposTitle_partidos1}" >
+                        <f:selectItems value="#{partidosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equiposController.update}" value="#{bundle.EditEquiposSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquiposViewLink}"/>
+                <br />
+                <h:commandLink action="#{equiposController.prepareList}" value="#{bundle.EditEquiposShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquiposIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
